@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import PackageCard from "@/components/client/common/Exam";
+import SubjectCard from "@/components/client/common/Exam";
 
 type Subject = {
   name: string;
@@ -117,6 +117,7 @@ const Entrance = () => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -180,7 +181,7 @@ const Entrance = () => {
             </h2>
             <div className="flex flex-col md:flex-row justify-center items-center gap-12">
               {tabData[examName].map((subject, index) => (
-                <PackageCard
+                <SubjectCard
                   key={subject.name}
                   name={subject.name}
                   iconSrc={subject.iconSrc}

@@ -31,7 +31,7 @@ export default function QuizLayout() {
   
    const useSubmitScore = () => {
     return useMutation({
-      mutationFn: async (data: ScoreSubmitRequest) => {
+      mutationFn: async (data: any) => {
         const response = await axiosInstance.post('/score/submit', data);
         return response.data;
       },
@@ -79,7 +79,7 @@ export default function QuizLayout() {
   
     const timeTaken = Math.floor((Date.now() - startTime) / 1000)
   
-    const selectedOptions: SelectedOption[] = Object.entries(answers).map(([questionId, selectedOption]) => ({
+    const selectedOptions: any[] = Object.entries(answers).map(([questionId, selectedOption]) => ({
       questionId,
       selectedOption
     }))

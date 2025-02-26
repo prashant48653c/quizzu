@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, BookmarkPlus } from "lucide-react";
 interface NavigationControlsProps {
   onPrevious: () => void;
   onNext: () => void;
-  onReview: () => void;
+  onReview?: () => void;
   hasPrevious: boolean;
   hasNext: boolean;
 }

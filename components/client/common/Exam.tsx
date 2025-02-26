@@ -15,6 +15,7 @@ interface SubjectCardProps {
 interface Quiz {
   _id: string;
   title: string;
+  name?:string;
   description: string;
   coverImage: string;
   duration: number;

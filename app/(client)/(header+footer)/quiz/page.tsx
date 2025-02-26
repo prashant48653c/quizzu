@@ -32,18 +32,15 @@ interface CategoryResponse {
   };
 }
 
-export const useCategories = () => {
-  return useQuery<any>({
+ 
+const Entrance = () => {
+  const { data, isLoading, isError } =  useQuery<CategoryResponse>({
     queryKey: ['categories'],
     queryFn: async () => {
       const response = await axiosInstance.get('/category');
       return response.data;
     }
   });
-};
-
-const Entrance = () => {
-  const { data, isLoading, isError } = useCategories();
 
   if (isLoading) {
     return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
