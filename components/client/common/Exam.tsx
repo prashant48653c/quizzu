@@ -9,6 +9,7 @@ interface SubjectCardProps {
   quizzes: Quiz;
   isSpecial?: boolean;
   specialTextSize?: string;
+  _id?:string;
 }
 
 interface Quiz {

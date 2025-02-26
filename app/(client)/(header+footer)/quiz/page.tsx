@@ -33,7 +33,7 @@ interface CategoryResponse {
 }
 
 export const useCategories = () => {
-  return useQuery<CategoryResponse>({
+  return useQuery<any>({
     queryKey: ['categories'],
     queryFn: async () => {
       const response = await axiosInstance.get('/category');
