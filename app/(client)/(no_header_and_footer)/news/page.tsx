@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Navbar from '@/components/client/common/ClientHeader';
 // Define the type for each news item
 interface NewsItem {
   image: string;

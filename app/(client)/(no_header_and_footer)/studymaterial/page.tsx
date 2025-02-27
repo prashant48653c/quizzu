@@ -1,7 +1,7 @@
 "use client";
 import SubjectCard from "@/components/client/common/Exam";
 import React, { useState } from "react";
- 
+ import Navbar from "@/components/client/common/ClientHeader";
 // Define types for subject and tab data
 type Subject = {
   name: string;

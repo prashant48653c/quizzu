@@ -73,7 +73,7 @@ const Sidebar = ({ data }: { data: UserType }) => {
   };
 
   return (
-    <div className="w-80 bg-white border border-t-0 border-l-0 border-slate-200 p-6">
+    <div className="w-80 bg-white border border-t-0 border-l-0 border-slate-200 p-4">
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
           <Image
@@ -103,11 +103,11 @@ const Sidebar = ({ data }: { data: UserType }) => {
         </div>
         <div className="text-center">
           <h2 className="font-semibold">{data.fullname}</h2>
-          <p className="text-sm text-gray-500">{data.role}</p>
+          <p className="text-sm text-gray-500 py-1">{data.role}</p>
 
           <button
             onClick={() => router.push("/profile/update")}
-            className="bg-gray-800 text-white px-2 py-1 outline-none rounded-full text-xs"
+            className="bg-gray-800 text-white px-4 py-2 outline-none rounded-full text-xs"
           >
             Update Profile
           </button>

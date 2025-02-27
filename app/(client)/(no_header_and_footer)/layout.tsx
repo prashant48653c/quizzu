@@ -1,7 +1,7 @@
 import "@/app/globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import QueryProvider from "@/provider/QueryClientProvider";
- 
+ import Navbar from "@/components/client/common/ClientHeader";
 
 export default function RootLayout({
   children,
@@ -12,6 +12,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        
+        <Navbar></Navbar>
       <QueryProvider>
         {children}
         <Toaster />

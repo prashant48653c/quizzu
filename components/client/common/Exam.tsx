@@ -5,17 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Check } from 'lucide-react';
 import { useRouter } from "next/navigation";
 
-interface SubjectCardProps {
-  quizzes: Quiz;
-  isSpecial?: boolean;
-  specialTextSize?: string;
-  _id?:string;
+// Define both interfaces to handle both use cases
+interface Subject {
+  name: string;
+  iconSrc: string;
+  topics: string[];
 }
 
 interface Quiz {
   _id: string;
   title: string;
-  name?:string;
+  name?: string;
   description: string;
   coverImage: string;
   duration: number;
@@ -24,13 +24,34 @@ interface Quiz {
   updatedAt: string;
 }
 
-const SubjectCard: React.FC<SubjectCardProps> = ({ quizzes, isSpecial, specialTextSize }) => {
+interface SubjectCardProps {
+  quizzes?: Quiz;
+  subject?: Subject;
+  isSpecial?: boolean;
+  specialTextSize?: string;
+  _id?: string;
+}
+
+const SubjectCard: React.FC<SubjectCardProps> = ({ quizzes, subject, isSpecial, specialTextSize }) => {
   const router = useRouter();
   const [liked, setLiked] = useState(false);
 
   const toggleLike = () => {
     setLiked((prev) => !prev);
   };
+
+  // Determine if we're using a subject or a quiz
+  const isSubject = !!subject;
+  
+  // Set display variables based on what was passed
+  const title = isSubject ? subject.name : quizzes?.title || "";
+  const imageSrc = isSubject ? subject.iconSrc : quizzes?.coverImage || "";
+  const imageAlt = isSubject ? `${subject.name} icon` : `${quizzes?.title} icon`;
+  
+  // Handle description/topics display
+  const displayPoints = isSubject 
+    ? subject.topics 
+    : quizzes?.description?.split(',') || [];
 
   return (
     <Card
@@ -60,19 +81,19 @@ const SubjectCard: React.FC<SubjectCardProps> = ({ quizzes, isSpecial, specialTe
       <CardHeader className="pb-2">
         <div className="flex justify-center mb-4">
           <img 
-            src={quizzes.coverImage} 
-            alt={`${quizzes.title} icon`} 
+            src={imageSrc} 
+            alt={imageAlt} 
             className="h-20 w-20 object-contain"
           />
         </div>
         <CardTitle className={`text-center ${specialTextSize || 'text-xl'} font-semibold`}>
-          {quizzes.title}
+          {title}
         </CardTitle>
       </CardHeader>
 
       <CardContent className="flex-grow px-6">
         <div className="space-y-3">
-          {quizzes.description.split(',').map((point, index) => (
+          {displayPoints.map((point, index) => (
             <div key={index} className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full border border-[#01805C] flex items-center justify-center flex-shrink-0">
                 <Check className="w-3 h-3 text-[#01805C]" />
@@ -84,10 +105,15 @@ const SubjectCard: React.FC<SubjectCardProps> = ({ quizzes, isSpecial, specialTe
       </CardContent>
 
       <CardFooter className="pb-6 px-6">
-        <Button onClick={() => router.push(`/quiz/${quizzes._id}`)}
+        <Button 
+          onClick={() => {
+            if (quizzes && quizzes._id) {
+              router.push(`/quiz/${quizzes._id}`);
+            }
+          }}
           className="w-full bg-[#01805C] hover:bg-[#016d4e] text-white rounded-full py-6"
         >
-          Play Quiz
+          {isSubject ? "Explore Subject" : "Play Quiz"}
         </Button>
       </CardFooter>
     </Card>
@@ -95,5 +121,3 @@ const SubjectCard: React.FC<SubjectCardProps> = ({ quizzes, isSpecial, specialTe
 };
 
 export default SubjectCard;
-
- 

@@ -3,7 +3,7 @@ import React from "react";
 import SubjectCard from "@/components/client/common/Exam";
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '@/lib/axiosInstance';
-
+import Image from "next/image";
 interface Quiz {
   _id: string;
   title: string;
@@ -53,48 +53,51 @@ const Entrance = () => {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen bg-white">
       {/* Top Navbar */}
-      <header className="top-0 left-0 w-full flex items-center justify-between bg-white px-5 py-4 z-50">
-        {/* Navbar content */}
-      </header>
+      
 
       {/* Main Content */}
-      <div
-        className="flex flex-col items-center justify-center px-4 mt-20 md:mt-28"
-        style={{
-          backgroundImage: 'url("/Ellipse 34-2.png")',
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.9,
-        }}
-      >
-        <img
-          src="/Group 88.png"
-          alt="Hero Illustration"
-          className="w-[600px] h-[475px]"
-        />
+      <div className="flex flex-col  px-4 py-8 md:py-24 min-h-[80vh] bg-background">
+      <div className="container mx-auto max-w-4xl">
+        <div className="flex flex-col items-center text-center space-y-8">
+          <Image
+            src="/assets/entrance/quiz.jpg"
+            width={300}
+            height={175}
+            alt="3D illustration of a person working at a standing desk"
+            className=" mb-8"
+          />
+
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Explore, Choose, Play And Improve</h1>
+
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+            Access thousands of expertly curated questions covering all essential topics. Track your progress and
+            identify areas for improvement with our detailed analytics.
+          </p>
+        </div>
       </div>
+    </div>
 
       {/* Categories Section */}
       <div className="container px-4 py-10 md:py-20">
-  {data?.data.categories.map((category) => (
-    <div key={category._id} className="mt-10">
-      <h2 className="text-2xl md:text-3xl ml-4 md:ml-14 font-semibold text-black">
-        {category.name}
-      </h2>
-      <div className="flex flex-wrap justify-center items-center gap-12 mt-8">
+     {data?.data.categories.map((category) => (
+      <div key={category._id} className="mt-10">
+      <h2 className="text-2xl md:text-3xl px-12 ml-4 md:ml-14 font-semibold text-black">
+         {category.name}
+       </h2>
+       <div className="flex flex-wrap justify-center items-center gap-12 mt-8">
         {category.quizzes.map((quiz, index) => (
           <SubjectCard
-            key={quiz._id}
+             key={quiz._id}
             _id={quiz._id}
             quizzes={quiz}
             isSpecial={index === 1} // Make middle card special
             specialTextSize={index === 1 ? "text-2xl" : "text-xl"}
           />
-        ))}
-      </div>
-    </div>
-  ))}
-</div>
+         ))}
+       </div>
+     </div>
+    ))}
+   </div>
     </section>
   );
 };

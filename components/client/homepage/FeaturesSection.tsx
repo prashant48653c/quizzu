@@ -28,9 +28,11 @@ const features: Feature[] = [
 
 const Features: React.FC = () => {
   return (
-    <section className="bg-background py-16 px-3 sm:px-20">
-        <h2 className="text-3xl font-bold tracking-tight text-[#1F1F1F] mb-8 text-center sm:text-left">Key Features</h2>
-      <div className="flex flex-col items-center">
+    <section className="bg-background py-16 px-3  sm:px-20">
+      <div className="">
+
+      <div className="flex flex-col ">
+        <h2 className="text-3xl font-bold tracking-tight px-6  text-[#1F1F1F] mb-8 text-center sm:text-left">Key Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <Card key={index} className=" max-w-80 border-none shadow-none ">
@@ -56,6 +58,7 @@ const Features: React.FC = () => {
             </Card>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

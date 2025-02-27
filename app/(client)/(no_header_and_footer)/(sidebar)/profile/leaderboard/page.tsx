@@ -91,7 +91,7 @@ export default function LeaderboardPage() {
   };
 
   return (
-    <Card className="w-full max-w-3xl mx-auto shadow-none border-0">
+    <Card className="w-full  border-0 mx-auto shadow-none">
       <CardHeader className="pb-0">
         <Tabs 
           value={selectedCategory} 
@@ -103,7 +103,7 @@ export default function LeaderboardPage() {
               <TabsTrigger
                 key={category._id}
                 value={category._id}
-                className="rounded-lg data-[state=active]:bg-[#01805C] data-[state=active]:text-white px-6"
+                className="rounded-xl data-[state=active]:bg-[#01805C] h-full  data-[state=active]:text-white px-6"
               >
                 {category.name}
               </TabsTrigger>

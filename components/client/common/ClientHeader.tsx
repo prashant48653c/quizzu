@@ -21,6 +21,7 @@ interface NavbarItem {
 const NavbarMenu: NavbarItem[] = [
   { id: 1, title: "Home", path: "/" },
   { id: 2, title: "About", path: "/about" },
+  { id: 2, title: "Test", path: "/quiz" },
   { id: 4, title: "Study Material", path: "/studymaterial" },
   { id: 5, title: "News", path: "/news" },
 ];
@@ -50,6 +51,7 @@ export default function Navbar() {
     if (activeItem) {
       setActiveMenu(activeItem);
     }
+    console.log(userInfo)
     if(!userInfo){
       getUser();
     }
@@ -109,12 +111,7 @@ export default function Navbar() {
               size={20}
             />
           </div>
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell size={24} />
-            <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
-              3
-            </span>
-          </Button>
+         
         </div>
       )}
 
@@ -124,18 +121,18 @@ export default function Navbar() {
           <Link href={"/profile"}>
             <div className="flex gap-1 items-center">
             <div className="w-12 h-12 rounded-full overflow-hidden">
-      <Image
-        src={userInfo?.avatar || '/favicon.ico'}
-        width={54}
-        height={54}
-        alt="profile"
-        className="w-full h-full object-cover"
-      />
-    </div>
+           <Image
+           src={userInfo?.avatar}
+           width={54}
+          height={54}
+           alt="profile"
+          className="w-full h-full object-cover"
+          />
+          </div>
             
               <div className="hidden sm:block">
-                <p className="font-semibold">{userInfo?.fullname}</p>
-                <p className="text-sm text-gray-500">{userInfo?.role}</p>
+                <p className="font-semibold px-2">{userInfo?.fullname}</p>
+                <p className="text-sm text-gray-500 px-2">{userInfo?.role}</p>
               </div>
             </div>
           </Link>

@@ -30,13 +30,15 @@ const WhySection = () => {
   ];
 
   return (
-    <section className="bg-white py-10 md:py-12 md:px-8">
-      <div className="flex flex-col gap-8">
-        <h2 className=" font-medium text-3xl md:text-4xl text-center md:text-left font-[Jost]">
+    <section className="bg-white py-2 md:py-12 mb-40 md:px-8">
+      <div className="flex flex-col w-screen items-center justify-center gap-8">
+        
+       
+
+        <div className="flex flex-col w-10/12 justify-center">
+        <h2 className=" font-medium text-3xl p-6 md:text-4xl text-center md:text-left font-[Jost]">
           WHY QUIZU?
         </h2>
-
-        <div className="flex justify-center">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 items-center">
             {/* Map over cardData to render cards dynamically */}
             {cardData.map((card) => (

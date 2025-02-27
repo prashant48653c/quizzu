@@ -183,9 +183,9 @@ const Entrance = () => {
               {tabData[examName].map((subject, index) => (
                 <SubjectCard
                   key={subject.name}
-                  name={subject.name}
-                  iconSrc={subject.iconSrc}
-                  topics={subject.topics}
+                  // name={subject.name}
+                  // iconSrc={subject.iconSrc}
+                  // topics={subject.topics}
                   isSpecial={(index + 1) % 3 === 2} // Special content logic (2, 5, 8, ...)
                   specialTextSize={(index + 1) % 3 === 2 ? "text-xl" : ""} // Increase text size for special content
                 />
